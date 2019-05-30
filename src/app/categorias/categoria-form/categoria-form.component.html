@@ -1,0 +1,26 @@
+<form class="was-validated form-row" #cadastro="ngForm" (ngSubmit)="salvar()">  
+  <div class="col-md-2 mb-3">
+    <label for="txtCodigo">C&oacute;digo</label>
+    <input type="text" ng-model="categoria.codigo" class="form-control" 
+    disabled name="codigo">
+  </div>
+
+  <div class="col-md-4 mb-3">
+      <label for="nome">Nome</label>
+    <input type="text" [(ngModel)]="categoria.nome" 
+    class="form-control is-valid" #nome="ngModel" name="nome" minlength="5" required>
+    <div [hidden]="nome.valid" class="invalid-feedback">
+        <p>Nome incompleto</p>
+    </div>
+  </div>
+
+  <div class="container">
+      <button class="btn btn-success" type="submit" 
+      [disabled]="cadastro.form.invalid">Enviar</button>
+      <button class="btn btn-danger" type="button" 
+      [hidden]="isNew" (click)="excluir()">Excluir</button>
+      <button class="btn btn-warning" type="button" 
+      (click)="cancelar()">Cancelar</button>
+  </div>
+</form>
+
